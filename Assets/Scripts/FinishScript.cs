@@ -12,7 +12,9 @@ public class FinishScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //Load the next level
-            // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            print(SceneManager.GetActiveScene().buildIndex + 1);
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }
