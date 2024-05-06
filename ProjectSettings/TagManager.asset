@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3114412137
+    locked: 0
+  - name: StartEndLayer
+    uniqueID: 242308949
+    locked: 0
+  - name: Player
+    uniqueID: 1933059705
+    locked: 0
+  - name: Wall
+    uniqueID: 2882876153
+    locked: 0
+  - name: ParticleEffect
+    uniqueID: 2019629809
+    locked: 0
