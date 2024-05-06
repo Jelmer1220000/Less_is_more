@@ -4,29 +4,24 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Vector2 targetPos;
-    public int speed;
+    public float moveSpeed = 5f; // Speed at which the player moves
+    private Rigidbody2D rb; // Reference to the player's Rigidbody2D component
 
-    // Update is called once per frame
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>(); // Get the Rigidbody2D component attached to the player
+    }
+
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+        // Get input from arrow keys or WASD
+        float moveHorizontal = Input.GetAxisRaw("Horizontal");
+        float moveVertical = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            targetPos = new Vector2(transform.position.x, transform.position.y + 1);
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            targetPos = new Vector2(transform.position.x, transform.position.y - 1);
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            targetPos = new Vector2(transform.position.x - 1, transform.position.y);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            targetPos = new Vector2(transform.position.x + 1, transform.position.y);
-        }
+        // Calculate movement vector
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical).normalized * moveSpeed * Time.deltaTime;
+
+        // Apply movement to the player
+        rb.MovePosition(rb.position + movement);
     }
 }
